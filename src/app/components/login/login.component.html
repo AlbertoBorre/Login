@@ -24,7 +24,7 @@
                             <div *ngIf="login['password'].errors['minlength']">La contraseña debe tener al menos 8 caracteres</div>
                         </div>
                     </div>
-                    <div *ngIf="error" class="alert cuadroError">{{error}}</div>
+                    <div *ngIf="error" class="cuadroError">{{error}}</div>
 
                     <button type="submit" [disabled]="cargando || loginFormulario.invalid" class="btnEnviar">
                         <span *ngIf="!cargando">Iniciar sesión</span>
