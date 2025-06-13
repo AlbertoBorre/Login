@@ -1,0 +1,7 @@
+<div class="fondo">
+    <div class="contenedor">
+        <h1>¡Te has logeado con éxito!</h1>
+        <p *ngIf="usuario">Bienvenido {{usuario.email}}</p>
+        <button class="btnLogout" (click)="logout()">Cerrar sesión</button>
+    </div>
+</div>

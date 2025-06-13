@@ -1,0 +1,96 @@
+<div class="contenedor">
+    <div class="cajaFormulario" [ngClass]="{'isCambio': !isLoginFormulario}">
+        <div class="formulario login">
+            <div class="contenido">
+                <h2>INICIAR SESIÓN</h2>
+                <form [formGroup]="loginFormulario" (ngSubmit)="loginSubmit()">
+                    <div class="inputContenido">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" formControlName="email"
+                            [ngClass]="{'error': login['email'].touched && login['email'].errors}"
+                            placeholder="Ingresa tu email">
+                        <div *ngIf="login['email'].touched && login['email'].errors" class="mensajeError">
+                            <div *ngIf="login['email'].errors['required']">El campo email es necesario</div>
+                            <div *ngIf="login['email'].errors['email']">Ingrese un email válido</div>
+                        </div>
+                    </div>
+                    <div class="inputContenido">
+                        <label for="loginPassword">Contraseña</label>
+                        <input type="password" id="loginPassword" formControlName="password"
+                            [ngClass]="{'error': login['password'].touched && login['password'].errors}"
+                            placeholder="Ingresa tu contraseña">
+                        <div *ngIf="login['password'].touched && login['password'].errors" class="mensajeError">
+                            <div *ngIf="login['password'].errors['required']">El campo contraseña es necesario</div>
+                            <div *ngIf="login['password'].errors['minlength']">La contraseña debe tener al menos 8 caracteres</div>
+                        </div>
+                    </div>
+                    <div *ngIf="error" class="alert cuadroError">{{error}}</div>
+
+                    <button type="submit" [disabled]="cargando || loginFormulario.invalid" class="btnEnviar">
+                        <span *ngIf="!cargando">Iniciar sesión</span>
+                        <span *ngIf="cargando">Cargando...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="formulario registro">
+            <div class="contenido">
+                <h2>REGISTRO</h2>
+                <form [formGroup]="registroFormulario" (ngSubmit)="registroSubmit()">
+                    <div class="inputContenido">
+                        <label for="registroEmail">Email</label>
+                        <input type="email" id="registroEmail" formControlName="email"
+                            [ngClass]="{'error': registro['email'].touched && registro['email'].errors}"
+                            placeholder="Ingresa tu email">
+                        <div *ngIf="registro['email'].touched && registro['email'].errors" class="mensajeError">
+                            <div *ngIf="registro['email'].errors['required']">El campo email es necesario</div>
+                            <div *ngIf="registro['email'].errors['email']">Ingrese un email válido</div>
+                        </div>
+                    </div>
+                    <div class="inputContenido">
+                        <label for="registroPassword">Contraseña</label>
+                        <input type="password" id="registroPassword" formControlName="password"
+                            [ngClass]="{'error': registro['password'].touched && registro['password'].errors}"
+                            placeholder="Ingresa tu contraseña">
+                        <div *ngIf="registro['password'].touched && registro['password'].errors" class="mensajeError">
+                            <div *ngIf="registro['password'].errors['required']">El campo contraseña es necesario</div>
+                            <div *ngIf="registro['password'].errors['minlength']">La contraseña debe tener al menos 8 caracteres</div>
+                        </div>
+                    </div>
+                    <div class="inputContenido">
+                        <label for="password2">Confirmar contraseña</label>
+                        <input type="password" id="password2" formControlName="password2"
+                            [ngClass]="{'error': registro['password2'].touched && registro['password2'].errors}"
+                            placeholder="Confirma tu contraseña">
+                        <div *ngIf="registro['password2'].touched && registro['password2'].errors" class="mensajeError">
+                            <div *ngIf="registro['password2'].errors['required']">Debes de confirmar la contraseña</div>
+                            <div *ngIf="registro['password2'].errors['coincidePassword']">Las contraseñas no coinciden</div>
+                        </div>
+                    </div>
+                    <div *ngIf="error" class="cuadroError">{{error}}</div>
+
+                    <button type="submit" [disabled]="cargando || registroFormulario.invalid" class="btnEnviar">
+                        <span *ngIf="!cargando">Registrarse</span>
+                        <span *ngIf="cargando">Cargando...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="cambioContenedor">
+        <div class="caja">
+            <div class="panel moverIzq">
+                <h2>¿Tienes ya una cuenta?</h2>
+                <p>Para conectarte, pulsa en el botón de aqui abajo.</p>
+                <button class="btnCambio" (click)="cambiarFormulario()">Iniciar sesión</button>
+            </div>
+            <div class="panel moverDer">
+                <h2>¿Eres nuevo?</h2>
+                <p>Si necesitas registrarte puedes hacerlo pulsando aqui abajo.</p>
+                <button class="btnCambio" (click)="cambiarFormulario()">Registrarse</button>
+            </div>
+        </div>
+    </div>
+</div>

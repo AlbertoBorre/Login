@@ -1,0 +1,43 @@
+.fondo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: lightgray;
+}
+
+.contenedor {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--sombra);
+    text-align: center;
+    max-width: 35%;
+    width: 100%;
+
+    h1 {
+        color: green;
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin-bottom: 25px;
+        color: grey;
+        font-size: 1.1rem;
+    }
+}
+
+.btnLogout {
+    background-color: rgb(255, 71, 71);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color .3s;
+
+    &:hover {
+        background-color: red;
+    }
+}
